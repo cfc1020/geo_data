@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @ex.name
+
+= link_to 'Edit', edit_ex_path(@ex)
+'|
+= link_to 'Back', exes_path

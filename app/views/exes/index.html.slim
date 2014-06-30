@@ -1,0 +1,21 @@
+h1 Listing exes
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @exes.each do |ex|
+      tr
+        td = ex.name
+        td = link_to 'Show', ex
+        td = link_to 'Edit', edit_ex_path(ex)
+        td = link_to 'Destroy', ex, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Ex', new_ex_path
