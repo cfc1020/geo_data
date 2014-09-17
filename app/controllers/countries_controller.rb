@@ -6,10 +6,21 @@ class CountriesController < ApplicationController
 
   def get_cities
     @countries = Country.all
-    
+    unless params[:country_ids].nil?
+      @cities = City.where(country: params[:country_ids])
+      unless params[:cities_ids].nil?
+        @checked_cities = City.find(params[:cities_ids]).each { |c| c.checked = true }
+        #p @checked_cities
+        @cities = ((@checked_cities & @cities) | @cities).sort
+      end
+      #p @cities
+    else
+      @cities = []
+    end
     respond_to do |format|
       format.html {}
       format.js {}
+      format.json { render json: @cities }
     end
   end
 

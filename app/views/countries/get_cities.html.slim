@@ -1,10 +1,19 @@
 table
   thead
     tr
-      th Name
-  tbody
-    - @countries.each do |country|
-      tr
-        td 
-          = check_box_tag 'country_ids[]', country.id
-          = country.name
+      th Cities
+  tbody#country_chb
+    = render @countries
+    /= render @cities unless @cities.nil?
+table
+  thead
+    tr
+      th Cities
+  tbody#city_chb
+    = render @cities unless @cities.nil?
+
+#surrounding
+  #first first div
+  #second second div
+  #third third div
+
